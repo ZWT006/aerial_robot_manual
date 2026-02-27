@@ -60,10 +60,9 @@ plugins:
       width: 100%
       height: auto
       zoomable: true
-  # Uncomment after initializing git repo:
-  # - git-revision-date-localized:
-  #     enable_creation_date: true
-  #     type: datetime
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: datetime
 
 markdown_extensions:
   - admonition
