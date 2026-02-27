@@ -1,0 +1,247 @@
+site_name: Aerial Robot Manual
+site_description: "Development and deployment manual for the Articulated Aerial Robot (AAR) platform"
+site_author: "AAR Development Team"
+repo_url: https://github.com/ZWT006/aerial_robot
+repo_name: ZWT006/aerial_robot
+edit_uri: ""  # Disable edit button until repo is public
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/robot
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ja
+  - tags:
+      tags_file: reference/tags.md
+  - glightbox:           # Image lightbox — pip install mkdocs-glightbox
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: 100%
+      height: auto
+      zoomable: true
+  # Uncomment after initializing git repo:
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  #     type: datetime
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ZWT006/aerial_robot
+      name: aerial_robot on GitHub
+  version:
+    provider: mike          # Enable versioned docs with `mike`
+    default: latest
+  # Platform tags used in hardware pages
+  tags:
+    Dragon: robots/dragon
+    Spidar: robots/spidar
+    Beetle: robots/beetle
+
+extra_css:
+  - stylesheets/extra.css
+
+# ============================================================
+#  Navigation
+# ============================================================
+nav:
+  - Home:
+    - index.md
+    - CONTRIBUTING.md
+
+  - Getting Started:
+    - overview/system_architecture.md
+    - overview/hardware_architecture.md
+    - overview/supported_robots.md
+    - Workspace Setup:
+      - workspace_setup/prerequisites.md
+      - workspace_setup/ros_workspace.md
+      - workspace_setup/network_setup.md
+
+  - Hardware:
+    - Flight Controller (Spinal):
+      - hardware/common/flight_controller/overview.md
+      - hardware/common/flight_controller/firmware_build.md
+      - hardware/common/flight_controller/firmware_flash.md
+      - hardware/common/flight_controller/imu_calibration.md
+      - Firmware Development:
+        - firmware_development/dev_environment.md
+        - firmware_development/debug_guide.md
+        - firmware_development/spinal_architecture.md
+        - firmware_development/rosserial_protocol.md
+        - firmware_development/add_new_message.md
+        - firmware_development/troubleshooting.md
+    - Joint Controller (Neuron):
+      - hardware/common/joint_controller/overview.md
+      - hardware/common/joint_controller/firmware_build.md
+      - hardware/common/joint_controller/id_assignment.md
+      - firmware_development/neuron_architecture.md
+    - Upper Computer:
+      - hardware/common/upper_computer/vim4_setup.md
+      - hardware/common/upper_computer/jetson_setup.md
+      - hardware/common/upper_computer/network_config.md
+    - ESC:
+      - hardware/common/esc/overview.md
+      - hardware/common/esc/calibration.md
+      - hardware/common/esc/configuration.md
+    - Servo:
+      - hardware/common/servo/overview.md
+      - hardware/common/servo/id_assignment.md
+      - hardware/common/servo/zero_calibration.md
+    - Sensors:
+      - hardware/common/sensors/imu.md
+      - hardware/common/sensors/gps_rtk.md
+      - hardware/common/sensors/realsense.md
+      - hardware/common/sensors/mocap.md
+      - hardware/common/sensors/rangefinder.md
+    - 3D Printing:
+      - hardware/common/3d_printing/material_guide.md
+      - hardware/common/3d_printing/print_settings.md
+      - hardware/common/3d_printing/post_processing.md
+    - Calibration:
+      - calibration/motor_test.md
+      - calibration/esc_calibration.md
+      - calibration/servo_calibration.md
+      - calibration/imu_calibration.md
+      - calibration/propeller_balance.md
+      - calibration/thrust_measurement.md
+    - Robot-Specific Assembly:
+      - hardware/robot_specific/dragon/assembly_notes.md
+      - hardware/robot_specific/spidar/assembly_notes.md
+      - hardware/robot_specific/beetle/assembly_notes.md
+
+  - Software:
+    - Control:
+      - software/control/controller_types.md
+      - software/control/gain_tuning.md
+      - software/control/trajectory.md
+    - Estimation:
+      - software/estimation/sensor_fusion.md
+      - software/estimation/ekf_tuning.md
+    - Navigation:
+      - software/navigation/flight_states.md
+      - software/navigation/keyboard_control.md
+      - software/navigation/joystick_control.md
+    - Visualization:
+      - software/visualization/rviz_setup.md
+      - software/visualization/rqt_plugins.md
+      - software/visualization/rosbag_workflow.md
+
+  - Simulation:
+    - simulation/gazebo_quickstart.md
+    - simulation/mujoco_quickstart.md
+    - simulation/sim_tips.md
+
+  - Robots:
+    - Dragon:
+      - robots/dragon/README.md
+      - robots/dragon/simulation.md
+      - robots/dragon/real_machine.md
+      - robots/dragon/launch_guide.md
+      - Controllers:
+        - robots/dragon/controllers/README.md
+        - robots/dragon/controllers/lqi.md
+      - robots/dragon/features.md
+      - robots/dragon/visualization.md
+      - robots/dragon/troubleshooting.md
+    - Spidar:
+      - robots/spidar/README.md
+      - robots/spidar/simulation.md
+      - robots/spidar/real_machine.md
+      - robots/spidar/launch_guide.md
+      - Controllers:
+        - robots/spidar/controllers/README.md
+      - robots/spidar/features.md
+      - robots/spidar/visualization.md
+      - robots/spidar/troubleshooting.md
+    - Beetle:
+      - robots/beetle/README.md
+      - robots/beetle/simulation.md
+      - robots/beetle/real_machine.md
+      - robots/beetle/launch_guide.md
+      - Controllers:
+        - robots/beetle/controllers/README.md
+      - robots/beetle/features.md
+      - robots/beetle/visualization.md
+      - robots/beetle/troubleshooting.md
+    - New Robot Template: robots/_template/README.md
+
+  - Safety:
+    - safety/pre_flight_checklist.md
+    - safety/emergency_procedures.md
+    - safety/lab_rules.md
+
+  - Reference:
+    - reference/ros_api.md
+    - reference/launch_params.md
+    - reference/error_codes.md
+    - reference/glossary.md
+    - reference/tags.md
