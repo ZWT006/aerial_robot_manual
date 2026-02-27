@@ -1,9 +1,10 @@
 site_name: Aerial Robot Manual
 site_description: "Development and deployment manual for the Articulated Aerial Robot (AAR) platform"
 site_author: "AAR Development Team"
-repo_url: https://github.com/ZWT006/aerial_robot
-repo_name: ZWT006/aerial_robot
-edit_uri: ""  # Disable edit button until repo is public
+site_url: https://ZWT006.github.io/aerial_robot_manual/
+repo_url: https://github.com/ZWT006/aerial_robot_manual
+repo_name: ZWT006/aerial_robot_manual
+edit_uri: edit/master/docs/
 
 docs_dir: docs
 site_dir: site

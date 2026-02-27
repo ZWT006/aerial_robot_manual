@@ -8,8 +8,8 @@ mkdocs-material>=9.5.0
 mkdocs-glightbox>=0.3.6         # Image lightbox
 mike>=2.0.0                     # Versioned docs (deploy with: mike deploy <version>)
 
-# Optional: show last-modified date per page (requires git repo)
-# mkdocs-git-revision-date-localized>=1.2.0
+# Show last-modified date per page (requires full git history — fetch-depth: 0 in CI)
+mkdocs-git-revision-date-localized>=1.2.0
 
 # ============================================================
 # Quick start:
