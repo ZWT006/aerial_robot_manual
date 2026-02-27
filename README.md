@@ -28,7 +28,7 @@ launch procedures for Dragon, Spidar, and Beetle platforms.
 
 ```bash
 # 1. Clone this repository
-git clone <this-repo-url>
+git clone https://github.com/ZWT006/aerial_robot_manual.git
 cd aerial_robot_manual
 
 # 2. Create and activate a conda environment
@@ -126,6 +126,46 @@ aerial_robot_manual/
 ├── mkdocs.yml                       # MkDocs + Material configuration
 ├── requirements.txt                 # Python dependencies
 └── .gitignore
+```
+
+---
+
+## Deployment (GitHub Pages)
+
+The site is automatically built and published via GitHub Actions on every push to `master`.
+
+**Live site:** [https://ZWT006.github.io/aerial_robot_manual/](https://ZWT006.github.io/aerial_robot_manual/)
+
+### First-Time GitHub Pages Setup
+
+After the first successful CI run, enable GitHub Pages once in the repository settings:
+
+1. Go to **Settings → Pages**
+2. Under **Source**, select:
+   - Branch: `gh-pages`
+   - Folder: `/ (root)` ← must be root, not `/docs`
+3. Click **Save**
+
+The site will be live within 1–2 minutes.
+
+### How CI/CD Works
+
+```
+git push master
+  → GitHub Actions (.github/workflows/deploy.yml)
+    → pip install -r requirements.txt
+    → mkdocs gh-deploy --force
+      → pushes built HTML to gh-pages branch
+        → GitHub Pages serves the site
+```
+
+Each page shows a **Last updated** timestamp derived from git commit history (powered by `mkdocs-git-revision-date-localized-plugin`). A pencil icon on each page links directly to the GitHub editor for that file.
+
+### Manual Deploy (without CI)
+
+```bash
+conda activate mkdocs
+mkdocs gh-deploy --force    # builds and pushes to gh-pages branch directly
 ```
 
 ---
